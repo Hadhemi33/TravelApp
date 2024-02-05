@@ -12,11 +12,8 @@ const styles = StyleSheet.create({
     marginBottom: 18,
   },
   row: {
-    marginBottom: 12,
-    marginLeft: 6,
-    marginTop: 4,
     flexDirection: 'row',
-    alignItems: 'center',
+    flexWrap: 'wrap',
   },
 });
 export default styles;

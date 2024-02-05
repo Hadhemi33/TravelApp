@@ -1,12 +1,16 @@
-import React, {useState} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import Title from '../../components/Title';
 import styles from './styles';
 import Categories from '../../components/Categories';
 import AttractionCard from '../../components/AttractionCard';
-
+import jsonData from '../../data/attractions.json';
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [data, setdata] = useState([]);
+  useEffect(() => {
+    setdata = jsonData;
+  }, []);
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -26,18 +30,21 @@ const Home = () => {
             'others',
           ]}
         />
-        <View style={styles.row}>
-          <AttractionCard
-            title="Entertainment Parc"
-            subtitle="Rome"
-            imageSrc="https://ds.static.rtbf.be/article/image/770x433/8/0/4/02d0f52911faf018d3787e7422c04889-1533543518.jpg"
-          />
-          <AttractionCard
-            title="Entertainment Parc"
-            subtitle="Rome"
-            imageSrc="https://ds.static.rtbf.be/article/image/770x433/8/0/4/02d0f52911faf018d3787e7422c04889-1533543518.jpg"
-          />
-        </View>
+        <ScrollView contentContainerStyle={styles.row}>
+          {data?.map((item, index) => {
+            <AttractionCard
+              key={item.id}
+              style={
+                index % 2 === 0
+                  ? {marginRight: 12, marginLeft: 32}
+                  : {marginRight: 32}
+              }
+              title={item.name}
+              subtitle={item.city}
+              imageSrc={item.images?.length ? item.images[0] : null}
+            />;
+          })}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
