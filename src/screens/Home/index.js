@@ -3,6 +3,7 @@ import {View, Text, SafeAreaView} from 'react-native';
 import Title from '../../components/Title';
 import styles from './styles';
 import Categories from '../../components/Categories';
+import AttractionCard from '../../components/AttractionCard';
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -25,6 +26,18 @@ const Home = () => {
             'others',
           ]}
         />
+        <View style={styles.row}>
+          <AttractionCard
+            title="Entertainment Parc"
+            subtitle="Rome"
+            imageSrc="https://ds.static.rtbf.be/article/image/770x433/8/0/4/02d0f52911faf018d3787e7422c04889-1533543518.jpg"
+          />
+          <AttractionCard
+            title="Entertainment Parc"
+            subtitle="Rome"
+            imageSrc="https://ds.static.rtbf.be/article/image/770x433/8/0/4/02d0f52911faf018d3787e7422c04889-1533543518.jpg"
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

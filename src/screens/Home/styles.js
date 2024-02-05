@@ -11,5 +11,12 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 18,
   },
+  row: {
+    marginBottom: 12,
+    marginLeft: 6,
+    marginTop: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
 export default styles;
