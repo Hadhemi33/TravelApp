@@ -5,17 +5,33 @@ import styles from './styles';
 import Categories from '../../components/Categories';
 import AttractionCard from '../../components/AttractionCard';
 import jsonData from '../../data/attractions.json';
+import categories from '../../data/categories.json';
+const All = 'All';
 const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState(All);
   const [data, setdata] = useState([]);
   useEffect(() => {
     setdata = jsonData;
   }, []);
+  useEffect(() => {
+    if (selectedCategory === ALL) {
+      setdata(jsonData);
+    } else {
+      const filteredData = jsonData?.filter(item =>
+        item?.categories?.includes(selectedCategory),
+      );
+
+      setdata(filteredData);
+    }
+  }, [selectedCategory]);
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         numColumns={2}
         style={{flexGrow: 1}}
+        ListEmptyComponent={
+          <Text style={styles.emptyText}>No items found.</Text>
+        }
         ListHeaderComponent={
           <>
             <View style={{margin: 32}}>
@@ -26,15 +42,7 @@ const Home = () => {
             <Categories
               selectedCategory={selectedCategory}
               onCategoryPress={setSelectedCategory}
-              categories={[
-                'All',
-                'Popular',
-                'Historical',
-                'Random',
-                'Trending',
-                'Exclusive',
-                'others',
-              ]}
+              categories={[All, ...categories]}
             />
           </>
         }
