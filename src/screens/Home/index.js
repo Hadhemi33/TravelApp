@@ -5,6 +5,7 @@ import styles from './styles';
 import Categories from '../../components/Categories';
 
 const Home = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -12,7 +13,8 @@ const Home = () => {
         <Title text="you want to go" />
         <Title text="Explore Attractions" style={styles.subtitle} />
         <Categories
-          selectedCategory="All"
+          selectedCategory={selectedCategory}
+          onCategoryPress={setSelectedCategory}
           categories={[
             'All',
             'Popular',
