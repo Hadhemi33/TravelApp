@@ -4,10 +4,11 @@ import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import styles from './styles';
 
 const All = 'All';
-const AttractionsDetails = () => {
+const AttractionsDetails = ({route}) => {
+  const {item} = route?.params || {};
   return (
     <SafeAreaView style={styles.container}>
-      <Text>AttractionDetails</Text>
+      <Text>{item?.name}</Text>
     </SafeAreaView>
   );
 };

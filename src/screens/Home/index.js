@@ -58,7 +58,7 @@ const Home = () => {
                 ? {marginRight: 12, marginLeft: 32}
                 : {marginRight: 32}
             }
-            onPress={() => navigation.navigate('AttractionsDetails')}
+            onPress={() => navigation.navigate('AttractionsDetails', {item})}
             title={item.name}
             subtitle={item.city}
             imageSrc={item.images?.length ? item.images[0] : null}
