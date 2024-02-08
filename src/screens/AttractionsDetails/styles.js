@@ -71,5 +71,10 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   price: {},
+  map: {
+    width: '100%',
+    height: 200,
+    borderRadius: 10,
+  },
 });
 export default styles;
