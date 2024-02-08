@@ -47,7 +47,7 @@ const Home = () => {
               categories={[All, ...categories]}
             />
           </>
-        }
+        }  
         data={data}
         keyExtractor={item => String(item?.id)}
         renderItem={({item, index}) => (
